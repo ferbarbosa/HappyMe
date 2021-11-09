@@ -4,7 +4,6 @@ import { Image, TouchableOpacity, Text, View } from 'react-native'
 import HomeScreen from '../screens/home'
 import ProfileScreen from '../screens/profile'
 import BadgesScreen from '../screens/badges'
-import LettersReceivedScreen from '../screens/letters/received'
 
 
 import LettersNavigation from './letters-navigation'
@@ -59,8 +58,8 @@ export default function AppNavigation() {
                 }}
             />
             <Tab.Screen 
-                name="Profile" 
-                component={ProfileScreen} 
+                name="Letters" 
+                component={LettersNavigation} 
                 options={{
                     tabBarIcon: ({focused}) => (
                         <View>
@@ -74,8 +73,8 @@ export default function AppNavigation() {
                 }}
             />
             <Tab.Screen 
-                name="Letters" 
-                component={LettersNavigation} 
+                name="Profile" 
+                component={ProfileScreen} 
                 options={{
                     tabBarIcon: ({focused}) => (
                         <View>

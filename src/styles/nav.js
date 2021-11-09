@@ -14,7 +14,6 @@ export default StyleSheet.create({
         elevation: 10,
         position: 'absolute',
         backgroundColor: '#ffffff',
-        borderRadius: 10,
         height: 60,
     },
 

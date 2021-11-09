@@ -5,7 +5,8 @@ import { createUserWithEmailAndPassword,
         signInWithEmailAndPassword,
         sendEmailVerification } from "firebase/auth";
 import { useNavigation } from '@react-navigation/core'
-import {auth} from '../../../firebase'
+import {auth, database} from '../../../firebase'
+import { getDatabase, ref, set, push } from "firebase/database";
 
 // Style imports
 import styleForms from '../../styles/forms'
@@ -16,6 +17,7 @@ import { showMessage, hideMessage } from "react-native-flash-message";
 
 const RegisterScreen = () => {
     
+    //Cadastro de usuario padrao firebase
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPass, setConfirmPass] = useState('')
@@ -25,10 +27,21 @@ const RegisterScreen = () => {
 
     const navigation = useNavigation()
 
+
+    //cadastro usuario realtime database
+    const userRef = ref(database, 'users');
+    const userPush = push(userRef)
+
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(user => {
             if (user){
                 navigation.replace("Home")
+                //Cria o usuario na tabela users do realtime database
+                set(userPush, {
+                    userId: user.uid,
+                    userLvl: 1,
+                    userXp: 0,
+                });
             }
         })
         return unsubscribe
@@ -42,7 +55,6 @@ const RegisterScreen = () => {
         try {
             if (password == confirmPass) {
                 const user = await createUserWithEmailAndPassword(auth,email,password)
-                console.log(user)
                 const mail = sendEmailVerification(auth.currentUser)
                                     .then(() => {
                                         console.log('Email enviado!')

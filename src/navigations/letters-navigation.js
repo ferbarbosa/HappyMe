@@ -13,8 +13,8 @@ export default function LettersNavigation() {
         <>
             <Text>Cartas</Text>
             <Tab.Navigator>
-                <Tab.Screen name="Send" component={LettersReceivedScreen} />
-                <Tab.Screen tabBarPosition="top" name="Received" component={LettersSendScreen} />
+                <Tab.Screen name="Send" component={LettersSendScreen} />
+                <Tab.Screen tabBarPosition="top" name="Received" component={LettersReceivedScreen} />
             </Tab.Navigator>
         </>
     )

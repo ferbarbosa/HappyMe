@@ -1,8 +1,8 @@
 const Colors = {
-    dark: '#00043A',
-    light: '#FFFFFF',
-    highlight: '#FF002B',
-    darkLighter: '#002962',
+    dark: '#10121c',
+    light: '#ffffff',
+    highlight: '#36c5f4',
+    darkLighter: '#10121c',
     accept: '#75F3BA',
     refuse: 'red',
     warning: 'red',

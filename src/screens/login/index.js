@@ -44,9 +44,7 @@ const LoginScreen = ({navigation}) => {
     const handleSingIn = async () => {
         try {
             const user = await signInWithEmailAndPassword(auth,email,password)
-            console.log(user)
         } catch (error){
-            console.log(error.message)
             showMessage({
                     message: "Email ou senha incorretos!",
                     type: "warning",

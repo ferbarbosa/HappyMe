@@ -9,6 +9,7 @@ import HomeScreen from '../screens/home'
 import LoginScreen from '../screens/login'
 import RegisterScreen from '../screens/register'
 import SplashScreen from '../screens/splash'
+import AwnserScreen from '../screens/letters/answer'
 
 const Stack = createNativeStackNavigator();
 
@@ -42,6 +43,11 @@ export default function App() {
         }}
         name="Home" 
         component={AppNavigation} />
+
+        <Stack.Screen options={{
+        }}
+        name="Awnser" 
+        component={AwnserScreen} />
         
       </Stack.Navigator>
     </NavigationContainer>

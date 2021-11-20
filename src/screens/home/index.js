@@ -63,6 +63,7 @@ const HomeScreen = ({navigation}) => {
             content: letter,
             date: formatedDate,
             userId: user.uid,
+            id: newLetter.key,
             });
 
             onValue(usersRef, (snapshot) =>{
@@ -80,11 +81,10 @@ const HomeScreen = ({navigation}) => {
                             //
                         }else{
                             //Referencia pro documento de send do usuario
-                            const letterSendRef = ref(database, 'send/'+theUserId)
+                            const letterSendRef = ref(database, 'send/'+theUserId+'/'+newLetter.key)
                             const letterSendPush = push(letterSendRef)
-                            console.log("Usuario "+aa+":"+theUserId)
                             aa++
-                            set(letterSendPush,{
+                            set(letterSendRef,{
                                 letterId: newLetter.key,
                                 awsered: false
                             })

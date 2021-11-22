@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { SafeAreaView , Modal,Pressable, FlatList,KeyboardAvoidingView, TouchableOpacity, StyleSheet, Text, TextInput, View, ScrollView } from 'react-native'
+import { SafeAreaView , Modal,Pressable, FlatList,KeyboardAvoidingView, TouchableOpacity, StyleSheet, Text, TextInput, View, ScrollView, Alert } from 'react-native'
 import { useNavigation } from '@react-navigation/core'
 import {auth, db, database} from '../../../../firebase'
 import { getDatabase, ref, set, push, onValue } from "firebase/database";
@@ -51,18 +51,36 @@ const LettersReceivedScreen = ({navigation}) => {
 
     const deleteLetter = (id) => {
         const delRef = ref(database, 'send/'+user.uid+'/'+id)
-        set(delRef, {
-                awsered: true,
-                letterId: id,
-        });
 
-        showMessage({
-                        message: "Carta deletada!",
-                        type: "success",
-                        icon: "success",
-                        style: styleGlobal.warningMessage
+        var deleteComfirm = false
 
-        });
+        Alert.alert(
+        "Excluir!",
+        "Deseja mesmo excluir a carta?",[
+                {
+                text: "Cancel",
+                style: "cancel"
+                },
+                { text: "Aceitar", onPress: () => {
+                        set(delRef, {
+                        awsered: true,
+                            letterId: id,
+                        })
+
+                        showMessage({
+                            message: "Carta deletada!",
+                            type: "success",
+                            icon: "success",
+                            style: styleGlobal.warningMessage
+                        })
+                    }
+                }
+            ]
+        )
+
+
+        
+        
     }
 
 
@@ -98,6 +116,7 @@ const LettersReceivedScreen = ({navigation}) => {
         
         <Item id={item.id} content={item.content} />
     );
+
 
     return (
         <SafeAreaView style={styleLetters.letterContainer}>

@@ -3,6 +3,13 @@ import Colors from './colors'
 
 
 export default StyleSheet.create({
+
+    container:{
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: Colors.dark
+    },
     letterContainer:{
         marginBottom: 60,
         backgroundColor: Colors.dark,
@@ -34,6 +41,33 @@ export default StyleSheet.create({
     letterText: {
         color: Colors.dark,
         fontSize: 16,
+    },
+
+    letterInput: {
+        backgroundColor: Colors.darkLighter,
+        paddingHorizontal: 15,
+        borderRadius: 10,
+        borderWidth: 1,
+        width: 300,
+        height: 120,
+        borderColor: Colors.light,
+        color: Colors.light,
+        textAlign: 'center'
+    },
+
+    sendLetterButton: {
+        marginTop: 10,
+        backgroundColor: Colors.highlight,
+        width: '30%',
+        padding: 15,
+        borderRadius: 10,
+        alignItems: 'center',
+        borderWidth: 2,
+    },
+
+    sendLetterButtonText: {
+        color: Colors.light,
+        fontSize: 12
     }
 
 })

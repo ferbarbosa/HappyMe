@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { SafeAreaView ,KeyboardAvoidingView, TouchableOpacity, StyleSheet, Text, TextInput, View, setTextInput } from 'react-native'
+import { SafeAreaView ,KeyboardAvoidingView, TouchableOpacity, StyleSheet, Text, TextInput, View, setTextInput, Keyboard } from 'react-native'
 import { createUserWithEmailAndPassword, 
         onAuthStateChanged, 
         signInWithEmailAndPassword,
@@ -13,7 +13,7 @@ import Filter from 'bad-words'
 
 // Style imports
 import styleGlobal from '../../styles/global'
-import styleForms from '../../styles/forms'
+import styleLetters from '../../styles/letters'
 
 // PRECISO ADICIONAR O BAD WORDS
 
@@ -58,6 +58,8 @@ const HomeScreen = ({navigation}) => {
 
             });
         }else{
+
+            Keyboard.dismiss();
 
             set(newLetter, {
             content: letter,
@@ -112,30 +114,32 @@ const HomeScreen = ({navigation}) => {
 
 
     return (
-        <View style={styleForms.container}>
-            <Text style={styleForms.buttonText}>Emails: {user?.email}</Text>
-            <Text style={styleForms.buttonText}>Token: {user?.uid} </Text>
+        <View style={styleLetters.container}>
+            <Text>Emails: {user?.email}</Text>
+            <Text >Token: {user?.uid} </Text>
 
             <TouchableOpacity
-                style={styleForms.button}    
+                    
                 onPress={logout}
             >
-                    <Text style={styleForms.buttonText}>Logout</Text>
+                    <Text>Logout</Text>
             </TouchableOpacity>
 
-            <View>
+            <View >
                 <TextInput
                     placeholder="Envie uma carta!"
+                    multiline={true}
                     value={letter}
                     onChangeText={text => setLetter(text) }
                     placeholderTextColor="white"
+                    style={styleLetters.letterInput}
                 />
             </View>
             <TouchableOpacity
                     onPress={sendLetter}
-                    style={styleForms.button}
+                    style={styleLetters.sendLetterButton}
                 >
-                    <Text style={styleForms.buttonText}>ENVIAR</Text>
+                    <Text style={styleLetters.sendLetterButtonText}>ENVIAR</Text>
             </TouchableOpacity>
         </View>
     )

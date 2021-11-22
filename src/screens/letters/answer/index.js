@@ -24,6 +24,8 @@ const AwnserScreen = ({route, navigation}) => {
 
     filter.addWords('mata', 'suicidio','matar', 'm4tar', 'm4t4r');
 
+    console.log(id)
+
     const sendAwnser = async () => {
 
         var day = new Date().getDate();
@@ -72,21 +74,26 @@ const AwnserScreen = ({route, navigation}) => {
     }
 
     return(
-        <View>
-            <Text>ID: {id}</Text>
-            <Text>{content}</Text>
+        <View style={styleLetters.container}>
+            <View style={styleLetters.letterBox}>
+                <Text>{content}</Text>
+            </View>
             <View>
                 <TextInput
                     placeholder="Envie uma resposta..."
                     value={awnser}
                     onChangeText={text => setAwnser(text) }
                     placeholderTextColor="white"
+                    style={styleLetters.letterInput}
                 />
             </View>
             <TouchableOpacity
-                    onPress={sendAwnser}
-                >
-                    <Text>ENVIAR</Text>
+                onPress={sendAwnser}
+                style={styleLetters.sendLetterButton}
+            >
+                <Text style={styleLetters.sendLetterButtonText}>
+                    ENVIAR
+                </Text>
             </TouchableOpacity>
         </View>
 

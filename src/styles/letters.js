@@ -10,8 +10,14 @@ export default StyleSheet.create({
         alignItems: 'center',
         backgroundColor: Colors.dark
     },
+
     letterContainer:{
-        marginBottom: 60,
+        height: '95%',
+        backgroundColor: Colors.dark,
+    },
+
+    awnserReceivedContainer: {
+        height: '100%',
         backgroundColor: Colors.dark,
     },
     letterBox: {
@@ -23,6 +29,7 @@ export default StyleSheet.create({
         alignItems: 'center',
         borderRadius: 10,
     },
+
 
     letterOptions: {
         flexDirection: 'row',
@@ -68,6 +75,12 @@ export default StyleSheet.create({
     sendLetterButtonText: {
         color: Colors.light,
         fontSize: 12
+    },
+
+    awnsersReceivedText: {
+        fontSize: 20,
+        color: Colors.light,
+        textAlign: 'center'
     }
 
 })

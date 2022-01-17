@@ -24,8 +24,6 @@ const AwnserScreen = ({route, navigation}) => {
 
     filter.addWords('mata', 'suicidio','matar', 'm4tar', 'm4t4r');
 
-    console.log(id)
-
     const sendAwnser = async () => {
 
         var day = new Date().getDate();
@@ -53,6 +51,9 @@ const AwnserScreen = ({route, navigation}) => {
             date: formatedDate,
             userWhoSend: user.uid,
             letterId: id,
+            deleted: false,
+            reported: false,
+            id: newAwnser.key
             });
 
             set(sendRef, {

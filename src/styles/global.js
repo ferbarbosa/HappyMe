@@ -25,5 +25,12 @@ export default StyleSheet.create({
 
     containerApp: {
         backgroundColor: Colors.dark
+    },
+
+    welcome: {
+        color: Colors.light,
+        fontSize: 23,
+        marginBottom: 80,
     }
+
 })

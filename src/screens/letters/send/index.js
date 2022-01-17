@@ -19,11 +19,15 @@ const LettersSendScreen = ({navigation}) => {
     const [letterList, setLetterList] = useState();
     const user = auth.currentUser;
     const refe = ref(database, 'letter')
-    const querySend = query(refe, orderByChild('userId'), equalTo(user.uid));
+    const querySend = query(refe, orderByChild('userId'), equalTo(user.uid))
+
+    const [awnserList, setAwnserList] = useState([])
+    
 
     const LetterHere = []
 
     useEffect(()=>{
+
         onValue(querySend, (snapshot) =>{
             const data = snapshot.val();
             const letterList = []
@@ -33,31 +37,30 @@ const LettersSendScreen = ({navigation}) => {
             setLetterList(letterList)
         })
 
+    
+
     }, [])
 
-        /*<ScrollView >
-                <View style={styleLetters.letterContainer}>
-                    {letterList?.map((letter, index) => (
-                        <View style={styleLetters.letterBox}>
-                            <Text key={index} style={styleLetters.letterText}>
-                                {letter?.content}
-                            </Text>
-                        </View>
-                    ))}
-                </View>
-        </ScrollView>
-        */
-
-    const Item = ({ content }) => (
-        <View style={styleLetters.letterBox}>
+    const Item = ({ id, content }) => (
+        <TouchableOpacity 
+            style={styleLetters.letterBox}
+            onPress={() => navigation.navigate('Reply', {
+                id: id,
+                content: content,
+            })}
+        
+        >
             <Text style={styleLetters.letterText}>
                 {content}
             </Text>
-        </View>
+            <Text>
+                Respostas
+            </Text>
+        </TouchableOpacity>
     );
 
     const renderItem = ({ item }) => (
-        <Item content={item.content} />
+        <Item id={item.id} content={item.content} />
     );
 
     

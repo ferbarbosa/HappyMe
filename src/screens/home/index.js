@@ -115,15 +115,7 @@ const HomeScreen = ({navigation}) => {
 
     return (
         <View style={styleLetters.container}>
-            <Text>Emails: {user?.email}</Text>
-            <Text >Token: {user?.uid} </Text>
-
-            <TouchableOpacity
-                    
-                onPress={logout}
-            >
-                    <Text>Logout</Text>
-            </TouchableOpacity>
+            <Text style={styleGlobal.welcome}>Bem vinde ao HappyMe!</Text>
 
             <View >
                 <TextInput

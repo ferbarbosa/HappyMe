@@ -10,6 +10,9 @@ import LoginScreen from '../screens/login'
 import RegisterScreen from '../screens/register'
 import SplashScreen from '../screens/splash'
 import AwnserScreen from '../screens/letters/answer'
+import ReplyScreen from '../screens/letters/reply'
+
+import Colors from '../styles/colors'
 
 const Stack = createNativeStackNavigator();
 
@@ -47,7 +50,26 @@ export default function App() {
         <Stack.Screen options={{
         }}
         name="Awnser" 
-        component={AwnserScreen} />
+        component={AwnserScreen}
+        options={{
+          headerStyle: {
+            backgroundColor: Colors.dark,
+          },
+          headerTintColor: Colors.light,
+        }}
+        />
+
+        <Stack.Screen options={{
+        }}
+        name="Reply" 
+        component={ReplyScreen}
+        options={{
+          headerStyle: {
+            backgroundColor: Colors.dark,
+          },
+          headerTintColor: Colors.light,
+        }} 
+        />
         
       </Stack.Navigator>
     </NavigationContainer>

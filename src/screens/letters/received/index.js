@@ -63,7 +63,7 @@ const LettersReceivedScreen = ({navigation}) => {
                 },
                 { text: "Aceitar", onPress: () => {
                         set(delRef, {
-                        awsered: true,
+                            awsered: true,
                             letterId: id,
                         })
 
@@ -77,16 +77,9 @@ const LettersReceivedScreen = ({navigation}) => {
                 }
             ]
         )
-
-
-        
         
     }
-
-
     const Item = ({id , content}) => (
-
-
         <View>
             <View style={styleLetters.letterOptions}>
                 <TouchableOpacity 

@@ -34,7 +34,7 @@ export default function AppNavigation() {
                     tabBarIcon: ({focused}) => (
                         <View>
                             <Text
-                                style={{color: focused ? '#e32f45' : '#748c94'}}
+                                style={{color: focused ? Colors.highlight : Colors.light}}
                             >
                                 Home
                             </Text>
@@ -49,7 +49,7 @@ export default function AppNavigation() {
                     tabBarIcon: ({focused}) => (
                         <View>
                             <Text
-                                style={{color: focused ? '#e32f45' : '#748c94'}}
+                                style={{color: focused ? Colors.highlight : Colors.light}}
                             >
                                 Badges
                             </Text>
@@ -64,7 +64,7 @@ export default function AppNavigation() {
                     tabBarIcon: ({focused}) => (
                         <View>
                             <Text
-                                style={{color: focused ? '#e32f45' : '#748c94'}}
+                                style={{color: focused ? Colors.highlight : Colors.light}}
                             >
                                 Letters
                             </Text>
@@ -79,7 +79,7 @@ export default function AppNavigation() {
                     tabBarIcon: ({focused}) => (
                         <View>
                             <Text
-                                style={{color: focused ? '#e32f45' : '#748c94'}}
+                                style={{color: focused ? Colors.highlight : Colors.light}}
                             >
                                 Profile
                             </Text>

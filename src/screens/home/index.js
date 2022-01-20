@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { SafeAreaView ,KeyboardAvoidingView, TouchableOpacity, StyleSheet, Text, TextInput, View, setTextInput, Keyboard } from 'react-native'
+import { SafeAreaView ,KeyboardAvoidingView, TouchableOpacity, StyleSheet, Image, Text, TextInput, View, setTextInput, Keyboard } from 'react-native'
 import { createUserWithEmailAndPassword, 
         onAuthStateChanged, 
         signInWithEmailAndPassword,
@@ -101,7 +101,7 @@ const HomeScreen = ({navigation}) => {
                         message: "Carta Enviada!",
                         type: "success",
                         icon: "success",
-                        style: styleGlobal.warningMessage
+                        style: styleGlobal.sucefullMessage
 
             });
         }
@@ -115,11 +115,20 @@ const HomeScreen = ({navigation}) => {
 
     return (
         <View style={styleLetters.container}>
-            <Text style={styleGlobal.welcome}>Bem vinde ao HappyMe!</Text>
+            <View style={styleLetters.logoBox}>
+               <Image
+                    style={styleLetters.logo}
+                    source={{
+                    uri: 'https://i.imgur.com/cdjWVII.png',
+                    }}
+                />
+            </View>
+            <Text style={styleLetters.welcome}>Bem vinde ao HappyMe!</Text>
 
-            <View >
+            <Image style={styleLetters.letterBg} source={require('../../assets/images/letterBg.png')} />
+            <View>
                 <TextInput
-                    placeholder="Envie uma carta!"
+                    placeholder="Escreva sua carta..."
                     multiline={true}
                     value={letter}
                     onChangeText={text => setLetter(text) }
@@ -127,12 +136,14 @@ const HomeScreen = ({navigation}) => {
                     style={styleLetters.letterInput}
                 />
             </View>
-            <TouchableOpacity
-                    onPress={sendLetter}
-                    style={styleLetters.sendLetterButton}
-                >
-                    <Text style={styleLetters.sendLetterButtonText}>ENVIAR</Text>
-            </TouchableOpacity>
+            <View style={styleLetters.buttonArea}>
+                <TouchableOpacity
+                        onPress={sendLetter}
+                        style={styleLetters.sendLetterButton}
+                    >
+                        <Text style={styleLetters.sendLetterButtonText}>ENVIAR</Text>
+                </TouchableOpacity>
+            </View>
         </View>
     )
 }

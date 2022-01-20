@@ -55,7 +55,7 @@ const ProfileScreen = () => {
                             style={styleProfile.logoutButton}
                             onPress={logout}
                         >
-                                <Text style={styleProfile.texts}>Logout</Text>
+                                <Text style={styleProfile.logoutText}>Logout</Text>
                         </TouchableOpacity>
                     </View>
                 </View>

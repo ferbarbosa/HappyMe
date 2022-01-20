@@ -42,7 +42,7 @@ export default function AppNavigation() {
                     ),
                 }}
             />
-            <Tab.Screen 
+            {/*<Tab.Screen 
                 name="Badges" 
                 component={BadgesScreen} 
                 options={{
@@ -56,7 +56,7 @@ export default function AppNavigation() {
                         </View>
                     ),
                 }}
-            />
+            /> */}
             <Tab.Screen 
                 name="Letters" 
                 component={LettersNavigation} 

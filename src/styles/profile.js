@@ -47,6 +47,11 @@ export default StyleSheet.create({
 
     texts: {
         fontSize: 18,
+        color: Colors.dark,
+    },
+
+    logoutText: {
+        fontSize: 18,
         color: Colors.light,
     },
 

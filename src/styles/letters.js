@@ -8,12 +8,18 @@ export default StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: Colors.dark
+        backgroundColor: Colors.highlight
     },
 
     letterContainer:{
         height: '95%',
         backgroundColor: Colors.dark,
+    },
+
+    welcome: {
+        color: Colors.dark,
+        fontSize: 19,
+        marginBottom: 150,
     },
 
     awnserReceivedContainer: {
@@ -51,25 +57,28 @@ export default StyleSheet.create({
     },
 
     letterInput: {
-        backgroundColor: Colors.darkLighter,
+        backgroundColor: 'transparent',
         paddingHorizontal: 15,
-        borderRadius: 10,
-        borderWidth: 1,
-        width: 300,
+        width: 220,
         height: 120,
-        borderColor: Colors.light,
         color: Colors.light,
-        textAlign: 'center'
+        textAlign: 'center',
+        marginBottom: '15%'
     },
 
     sendLetterButton: {
-        marginTop: 10,
-        backgroundColor: Colors.highlight,
-        width: '30%',
+        backgroundColor: Colors.dark,
+        width: '50%',
         padding: 15,
         borderRadius: 10,
         alignItems: 'center',
         borderWidth: 2,
+        marginBottom: '70%'
+    },
+
+    buttonArea: {
+        alignItems: 'center',
+        width: '50%',
     },
 
     sendLetterButtonText: {
@@ -81,6 +90,24 @@ export default StyleSheet.create({
         fontSize: 20,
         color: Colors.light,
         textAlign: 'center'
+    },
+
+    letterBg: {
+        position: 'absolute',
+        width: 320,
+        height: 320,
+        resizeMode: 'contain'
+    },
+
+    logo: {
+        width: 320,
+        height: 320,
+        resizeMode: 'contain',
+        marginBottom: 630
+    },
+    
+    logoBox: {
+        position: 'absolute',
     }
 
 })

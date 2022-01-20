@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { SafeAreaView , Modal,Pressable, FlatList,KeyboardAvoidingView, TouchableOpacity, StyleSheet, Text, TextInput, View, ScrollView } from 'react-native'
+import { SafeAreaView , Modal,Pressable, FlatList,KeyboardAvoidingView,TouchableOpacity, StyleSheet, Text, TextInput, View, ScrollView } from 'react-native'
 import { useNavigation } from '@react-navigation/core'
 import {auth, db, database} from '../../../../firebase'
 import { getDatabase, ref, set, push, onValue } from "firebase/database"
@@ -65,7 +65,7 @@ const AwnserScreen = ({route, navigation}) => {
                 message: "Resposta enviada!",
                 type: "success",
                 icon: "success",
-                style: styleGlobal.warningMessage
+                style: styleGlobal.sucefullMessage
 
             });
 

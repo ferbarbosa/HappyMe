@@ -4,7 +4,7 @@ import Colors from './colors'
 
 export default StyleSheet.create({
     warningMessage: {
-        backgroundColor: "red"
+        backgroundColor: Colors.warning,
     },
 
     sucefullMessage: {
@@ -18,19 +18,15 @@ export default StyleSheet.create({
         backgroundColor: Colors.dark,
     },
 
-    splashText: {
-        color: Colors.light,
-        fontSize: 20,
+    splashLogo: {
+        color: Colors.highlight,
+        fontSize: 40,
+        fontWeight: '700',
     },
 
     containerApp: {
         backgroundColor: Colors.dark
     },
-
-    welcome: {
-        color: Colors.light,
-        fontSize: 23,
-        marginBottom: 80,
-    }
+    
 
 })

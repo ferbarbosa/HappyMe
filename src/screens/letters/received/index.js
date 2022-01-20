@@ -71,7 +71,7 @@ const LettersReceivedScreen = ({navigation}) => {
                             message: "Carta deletada!",
                             type: "success",
                             icon: "success",
-                            style: styleGlobal.warningMessage
+                            style: styleGlobal.sucefullMessage
                         })
                     }
                 }

@@ -14,7 +14,7 @@ export default StyleSheet.create({
         width: '80%',
     },
     input: {
-        backgroundColor: Colors.darkLighter,
+        backgroundColor: Colors.dark,
         paddingHorizontal: 15,
         paddingVertical: 10,
         borderRadius: 10,

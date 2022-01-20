@@ -38,9 +38,7 @@ const SplashScreen = ({navigation}) => {
 
     return (
       <View style={styleGlobal.splash}>
-        <Image
-            source={require('../../assets/images/HappyMe!.jpg')}
-        />
+        <Text style={styleGlobal.splashLogo}>HappyMe!</Text>
       </View>
     )
 }

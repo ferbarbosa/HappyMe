@@ -27,7 +27,7 @@ export default function LettersNavigation() {
                     component={LettersSendScreen}
                     options={{
                         tabBarLabel: ({focused, color, size}) => (
-                            <Text style={{color: focused ? Colors.highlight : Colors.light}}>Send</Text>
+                            <Text style={{color: focused ? Colors.highlight : Colors.light}}>Enviadas</Text>
                         ),
                     }}
                 />
@@ -37,7 +37,7 @@ export default function LettersNavigation() {
                     component={LettersReceivedScreen}
                     options={{
                         tabBarLabel: ({focused, color, size}) => (
-                            <Text style={{color: focused ? Colors.highlight : Colors.light}}>Received</Text>
+                            <Text style={{color: focused ? Colors.highlight : Colors.light}}>Recebidas</Text>
                         ),
                     }}
 

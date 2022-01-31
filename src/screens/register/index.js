@@ -38,9 +38,12 @@ const RegisterScreen = () => {
                 navigation.replace("Home")
                 //Cria o usuario na tabela users do realtime database
                 set(userPush, {
+                    username: 'Username',
                     userId: user.uid,
                     userLvl: 1,
                     userXp: 0,
+                    key: userPush.key,
+                    admin: false
                 });
             }
         })

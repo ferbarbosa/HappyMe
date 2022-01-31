@@ -21,6 +21,8 @@ const ReplyScreen = ({route, navigation}) => {
     const awnserRef = ref(database, 'awnser')
     const queryAwnser = query(awnserRef, orderByChild('letterId'), equalTo(id))
 
+    
+
     useEffect(() => {
         // Search for the letter in awnsers
         onValue(queryAwnser, (snapshot) =>{
@@ -34,13 +36,47 @@ const ReplyScreen = ({route, navigation}) => {
             }
             setAwnserList(awnserList)
         })
+
     }, [])
+
+    const report = async (id) => {
+
+        const reportRef = ref(database, 'report')
+        const newReport = push(reportRef)
+        const queryDelete = ref(database, 'awnser/'+id+'/deleted')
+        const queryReport = ref(database, 'awnser/'+id+'/reported')
+
+        var reportComfirm = false
+
+        Alert.alert(
+        "Denunciar!",
+        "Deseja denunciar a resposta?",[
+                {
+                text: "Cancel",
+                style: "cancel"
+                },
+                { text: "Aceitar", onPress: () => {
+                        set(queryReport, true)
+
+                        set(queryDelete, true)
+
+                        showMessage({
+                            message: "Carta denunciada!",
+                            type: "success",
+                            icon: "success",
+                            style: styleGlobal.sucefullMessage
+                        })
+                    }
+                }
+            ]
+        )
+    }
 
 
     const deleteLetter = (id) => {
 
         var deleteComfirm = false
-        const queryDelete = ref(database, 'awnser/'+id)
+        const queryDelete = ref(database, 'awnser/'+id+'/deleted')
 
         Alert.alert(
         "Excluir!",
@@ -50,9 +86,7 @@ const ReplyScreen = ({route, navigation}) => {
                 style: "cancel"
                 },
                 { text: "Aceitar", onPress: () => {
-                        set(queryDelete, {
-                            deleted: true,
-                        })
+                        set(queryDelete, true)
 
                         showMessage({
                             message: "Carta deletada!",
@@ -77,7 +111,7 @@ const ReplyScreen = ({route, navigation}) => {
                     <Text style={styleLetters.letterText}>Excluir</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styleLetters.optionButton}
-                onPress={() => deleteLetter(id)}>
+                onPress={() => report(id)}>
                     
                     <Text style={styleLetters.letterText}>Denunciar</Text>
                 </TouchableOpacity>

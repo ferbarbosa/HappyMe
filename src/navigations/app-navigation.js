@@ -24,7 +24,6 @@ export default function AppNavigation() {
                 tabBarStyle: {
                     ...styleNav.box
                 },
-                
             }}
         >
             <Tab.Screen 
@@ -34,9 +33,9 @@ export default function AppNavigation() {
                     tabBarIcon: ({focused}) => (
                         <View>
                             <Text
-                                style={{color: focused ? Colors.highlight : Colors.light}}
+                                style={{color: focused ? Colors.highlight : Colors.light, fontSize: focused ? 18 : 14}}
                             >
-                                Home
+                                Inicio
                             </Text>
                         </View>
                     ),
@@ -64,9 +63,9 @@ export default function AppNavigation() {
                     tabBarIcon: ({focused}) => (
                         <View>
                             <Text
-                                style={{color: focused ? Colors.highlight : Colors.light}}
+                                style={{color: focused ? Colors.highlight : Colors.light, fontSize: focused ? 18 : 14}}
                             >
-                                Letters
+                                Cartas
                             </Text>
                         </View>
                     ),
@@ -79,9 +78,9 @@ export default function AppNavigation() {
                     tabBarIcon: ({focused}) => (
                         <View>
                             <Text
-                                style={{color: focused ? Colors.highlight : Colors.light}}
+                                style={{color: focused ? Colors.highlight : Colors.light, fontSize: focused ? 18 : 14}}
                             >
-                                Profile
+                                Perfil
                             </Text>
                         </View>
                     ),

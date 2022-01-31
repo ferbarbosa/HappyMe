@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import { SafeAreaView ,KeyboardAvoidingView, TouchableOpacity, StyleSheet, Text, TextInput, View, Image } from 'react-native'
 import { useNavigation } from '@react-navigation/core'
 import {auth, db, database} from '../../../firebase'
-import { getDatabase, ref, set, push, onValue, orderByChild, equalTo, query } from "firebase/database";
+import { getDatabase, ref, set, push, onValue, orderByChild, equalTo, query, update } from "firebase/database";
 
 
 import styleGlobal from '../../styles/global'
@@ -16,6 +16,9 @@ const ProfileScreen = () => {
     const [lvl, setLvl] = useState(0)
     const [xp, setXp] = useState(0)
     const [username, setUsername] = useState('Username')
+    const [admin, setAdmin] = useState(false)
+    const [edit, setEdit] = useState(false)
+    const [key, setKey] = useState()
 
     const refe = ref(database, 'users')
     const queryProfile = query(refe, orderByChild('userId'), equalTo(user.uid));
@@ -26,6 +29,20 @@ const ProfileScreen = () => {
         }).catch(error => alert(error))
     }
 
+    const reports = async () => {
+        navigation.navigate('Reports')
+    }
+
+    const editar = async () => {
+        setEdit(true)
+    }
+
+    const salvar = async () => {
+        const editRef = ref(database, 'users/'+key+'/username')
+        set(editRef, username)
+        setEdit(false)
+    }
+
     useEffect(() => {
         onValue(queryProfile, (snapshot) =>{
             const data = snapshot.val();
@@ -33,29 +50,72 @@ const ProfileScreen = () => {
                 setLvl(data[id].userLvl)
                 setXp(data[id].userXp)
                 setUsername(data[id].username)
+                setAdmin(data[id].admin)
+                setKey(data[id].key)
             }
         })
     }, [])
 
+
+
     return (
         <View>
-                <View style={styleProfile.photoBox}> 
-                    <Image/>
-                    <Text style={styleProfile.username}>{username}</Text>
-                </View>
-                <View style={styleProfile.optionsBox}>
-                    <View style={styleProfile.statusBox}>
-                        <Text style={styleProfile.titleText}>Status</Text>
-                        <Text style={styleProfile.texts}>Level: {lvl}</Text>
-                        <Text style={styleProfile.texts}>Experiencia: {xp}</Text>
+                
+                {edit ? (
+                    <View style={styleProfile.photoBox}>
+                        <TextInput
+                            placeholder={username}
+                            multiline={false}
+                            value={username}
+                            onChangeText={text => setUsername(text) }
+                            placeholderTextColor="white"
+                            style={styleProfile.userInput}
+                        />
+                        <TouchableOpacity
+                            onPress={salvar}
+                        >
+                            <Text style={styleProfile.optionText}>Salvar</Text>
+                        </TouchableOpacity>
                     </View>
+                )
+
+                    : 
+                    <View style={styleProfile.photoBox}>
+                        <Text style={styleProfile.username}>{username}</Text>
+                        <TouchableOpacity
+                            onPress={editar}
+                        >
+                            <Image
+                                style={styleProfile.editImg}
+                                source={{
+                                uri: 'https://i.imgur.com/AHeSqJO.png',
+                                }}
+                            />
+                        </TouchableOpacity>
+                    </View>
+
+                }
+                <View style={styleProfile.optionsBox}>
                     <View style={styleProfile.configBox}>
                         <Text style={styleProfile.titleText}>Config</Text>
+                        {admin? ( 
+                            <TouchableOpacity
+                            style={styleProfile.optionButton}
+                            onPress={reports}
+                             >
+                                <Text style={styleProfile.optionText}>Denuncias</Text>
+                            </TouchableOpacity>
+                        )
+
+                            : null
+
+                        }
+
                         <TouchableOpacity
-                            style={styleProfile.logoutButton}
+                            style={styleProfile.optionButton}
                             onPress={logout}
                         >
-                                <Text style={styleProfile.logoutText}>Logout</Text>
+                                <Text style={styleProfile.optionText}>Logout</Text>
                         </TouchableOpacity>
                     </View>
                 </View>

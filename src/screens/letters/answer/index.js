@@ -85,7 +85,7 @@ const AwnserScreen = ({route, navigation}) => {
                     value={awnser}
                     onChangeText={text => setAwnser(text) }
                     placeholderTextColor="white"
-                    style={styleLetters.letterInput}
+                    style={styleLetters.awnserInput}
                 />
             </View>
             <TouchableOpacity

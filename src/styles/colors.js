@@ -2,7 +2,7 @@ const Colors = {
     dark: '#020512',
     light: '#f5f5f5',
     highlight: '#FFC117',
-    darkLighter: '#6076B3',
+    darkLighter: '#03071a',
     accept: '#27A382',
     refuse: '#DE7428',
     warning: '#DE7428',

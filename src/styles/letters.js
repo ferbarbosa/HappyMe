@@ -66,6 +66,17 @@ export default StyleSheet.create({
         marginBottom: '15%'
     },
 
+    awnserInput: {
+        backgroundColor: Colors.dark,
+        paddingHorizontal: 15,
+        width: 320,
+        height: 140,
+        color: Colors.light,
+        textAlign: 'center',
+        borderRadius: 10,
+        marginBottom: '15%'
+    },
+
     sendLetterButton: {
         backgroundColor: Colors.dark,
         width: '50%',

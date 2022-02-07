@@ -32,23 +32,23 @@ const HomeScreen = ({navigation}) => {
     const newLetter = push(letterRef)
     const badwordRef = ref(database, 'badword')
 
-    const filter = new Filter();
+    const filter = new Filter()
 
 
     //palavras proibidas
-    filter.addWords(...badword);
+    filter.addWords(...badword)
     
 
     useEffect(() => {
         onValue(badwordRef, (snapshot) =>{
-            const data = snapshot.val();
+            const data = snapshot.val()
             const badword = []
             for(let id in data){
                 badword.push(data[id])
             }
             setBadword(badword)
         })
-    }, []);
+    }, [])
     
 
     const logout = async () => {

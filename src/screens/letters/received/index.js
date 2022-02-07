@@ -119,6 +119,7 @@ const LettersReceivedScreen = ({navigation}) => {
                     renderItem={renderItem}
                     initialNumToRender={1}
                 />
+
         </ SafeAreaView>
     )
 }

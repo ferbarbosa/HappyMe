@@ -50,6 +50,7 @@ export default StyleSheet.create({
         color: Colors.dark,
     },
 
+
     optionText: {
         fontSize: 18,
         color: Colors.light,

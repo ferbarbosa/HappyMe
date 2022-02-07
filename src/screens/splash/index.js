@@ -9,8 +9,6 @@ import { createUserWithEmailAndPassword,
         signOut } from "firebase/auth";
 import {auth} from '../../../firebase'
 
-import LottieView from 'lottie-react-native'
-
 // Style imports
 import styleGlobal from '../../styles/global'
 
@@ -25,7 +23,7 @@ const SplashScreen = ({navigation}) => {
             if (user){
                 navigation.replace("Home")
             }else{
-                navigation.replace("Login")
+                navigation.replace("Prelogin")
             }
         })
         return unsubscribe

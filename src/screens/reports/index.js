@@ -46,8 +46,9 @@ const ReportsScreen = () => {
                 <Text style={styleLetters.letterText}>
                         {content}
                 </Text>
-                <Text>User ID:</Text>
+                <Text style={styleLetters.letterText}>User ID:</Text>
                 <TextInput
+                    style={styleLetters.letterText}
                     value={user}
                 >
                 </TextInput>

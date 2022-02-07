@@ -26,9 +26,30 @@ const HomeScreen = ({navigation}) => {
     const user = auth.currentUser;
 
     const letterRef = ref(database, 'letter')
-    const [userList, setuserList] = useState();
+    const [userList, setuserList] = useState()
+    const [badword, setBadword] = useState([])
     const usersRef = ref(database, 'users')
     const newLetter = push(letterRef)
+    const badwordRef = ref(database, 'badword')
+
+    const filter = new Filter();
+
+
+    //palavras proibidas
+    filter.addWords(...badword);
+    
+
+    useEffect(() => {
+        onValue(badwordRef, (snapshot) =>{
+            const data = snapshot.val();
+            const badword = []
+            for(let id in data){
+                badword.push(data[id])
+            }
+            setBadword(badword)
+        })
+    }, []);
+    
 
     const logout = async () => {
         auth.signOut().then(() => {
@@ -44,10 +65,6 @@ const HomeScreen = ({navigation}) => {
         var formatedDate = day + '/' + month + '/' + year
 
 
-        const filter = new Filter();
-        
-        //palavras proibidas
-        filter.addWords('mata', 'suicidio','matar', 'm4tar', 'm4t4r');
 
         if(filter.isProfane(letter)){
             showMessage({
@@ -57,7 +74,16 @@ const HomeScreen = ({navigation}) => {
                     style: styleGlobal.warningMessage
 
             });
-        }else{
+        }else if(letter == "" || letter == " "){
+            showMessage({
+                    message: "Você não pode enviar uma mensagem vazia!",
+                    type: "warning",
+                    icon: "warning",
+                    style: styleGlobal.warningMessage
+
+            });
+        }
+        else{
 
             Keyboard.dismiss();
 
@@ -122,6 +148,7 @@ const HomeScreen = ({navigation}) => {
                     uri: 'https://i.imgur.com/cdjWVII.png',
                     }}
                 />
+                
             </View>
             <Text style={styleLetters.welcome}>Bem vinde ao HappyMe!</Text>
 

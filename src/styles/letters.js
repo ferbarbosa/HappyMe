@@ -12,14 +12,14 @@ export default StyleSheet.create({
     },
 
     letterContainer:{
-        height: '95%',
+        height: '100%',
         backgroundColor: Colors.dark,
     },
 
     welcome: {
         color: Colors.dark,
         fontSize: 19,
-        marginBottom: 150,
+        marginBottom: 90,
     },
 
     awnserReceivedContainer: {
@@ -29,11 +29,10 @@ export default StyleSheet.create({
     letterBox: {
         width: '100%',
         backgroundColor: Colors.light,
-        height: 200,
-        marginBottom: 30,
-        justifyContent: 'center',
-        alignItems: 'center',
+        height: 250,
         borderRadius: 10,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
 
 
@@ -54,6 +53,7 @@ export default StyleSheet.create({
     letterText: {
         color: Colors.dark,
         fontSize: 16,
+        textAlign: 'center',
     },
 
     letterInput: {
@@ -84,7 +84,7 @@ export default StyleSheet.create({
         borderRadius: 10,
         alignItems: 'center',
         borderWidth: 2,
-        marginBottom: '70%'
+        marginBottom: '50%'
     },
 
     buttonArea: {
@@ -111,14 +111,44 @@ export default StyleSheet.create({
     },
 
     logo: {
-        width: 320,
-        height: 320,
+        width: 250,
+        height: 250,
         resizeMode: 'contain',
-        marginBottom: 630
+        marginBottom: 550
     },
     
     logoBox: {
         position: 'absolute',
+    },
+
+    carousel: {
+        marginTop: '50%',
+    },
+
+    awnserCarousel: {
+        marginTop: '10%'
+    },
+
+    dateTxt: {
+        color: Colors.dark,
+    },
+
+    viewAwnsersButton: {
+        backgroundColor: Colors.highlight,
+        padding: 10,
+        borderRadius: 10,
+        alignItems: 'center',
+    },
+
+    viewAwnserText: {
+        color: Colors.dark,
+        fontSize: 20,
+    },
+
+    viewAwnserBox: {
+        alignItems: 'center',
+        marginTop: 10,
     }
+
 
 })

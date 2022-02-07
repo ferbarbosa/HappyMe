@@ -20,3 +20,4 @@ const Colors = {
     //sucess: '#75F3BA',
 
 export default Colors
+

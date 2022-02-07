@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { SafeAreaView , Modal,Pressable, FlatList,KeyboardAvoidingView, TouchableOpacity, StyleSheet,Alert, Text, TextInput, View, ScrollView } from 'react-native'
+import { SafeAreaView ,Dimensions, Modal,Pressable, FlatList,KeyboardAvoidingView, TouchableOpacity, StyleSheet,Alert, Text, TextInput, View, ScrollView } from 'react-native'
 import { useNavigation } from '@react-navigation/core'
 import {auth, db, database} from '../../../../firebase'
 import { getDatabase, ref, set, push, onValue, query, orderByChild, equalTo } from "firebase/database"
@@ -11,12 +11,21 @@ import { showMessage, hideMessage } from "react-native-flash-message"
 import styleGlobal from '../../../styles/global'
 import styleLetters from '../../../styles/letters'
 
+// Carousel
+import Carousel, { Pagination } from 'react-native-snap-carousel';
+
+const SLIDER_WIDTH = Dimensions.get('window').width;
+const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.9);
+const ITEM_HEIGHT = Math.round(ITEM_WIDTH * 4 / 4);
+
 
 const ReplyScreen = ({route, navigation}) => {
 
     const user = auth.currentUser;
     const {id, content} = route.params
     const [awnserList, setAwnserList] = useState([])
+    const [numAwnser, setnumAwnser] = useState(0)
+    const [activeSlide, setactiveSlide] = useState(0)
 
     const awnserRef = ref(database, 'awnser')
     const queryAwnser = query(awnserRef, orderByChild('letterId'), equalTo(id))
@@ -28,12 +37,16 @@ const ReplyScreen = ({route, navigation}) => {
         onValue(queryAwnser, (snapshot) =>{
             const data = snapshot.val();
             const awnserList = []
+            var num = 0
             
             for(let id in data){
                 if(!data[id].deleted){
                     awnserList.push(data[id])
+                    num++
                 }
+        
             }
+            setnumAwnser(num)
             setAwnserList(awnserList)
         })
 
@@ -77,7 +90,6 @@ const ReplyScreen = ({route, navigation}) => {
 
         var deleteComfirm = false
         const queryDelete = ref(database, 'awnser/'+id+'/deleted')
-
         Alert.alert(
         "Excluir!",
         "Deseja mesmo excluir a carta?",[
@@ -103,12 +115,13 @@ const ReplyScreen = ({route, navigation}) => {
     
 
     const Item = ({ id, content }) => (
-        <View>
+        <View style={styles.itemContainer}>
             <View style={styleLetters.letterOptions}>
                 <TouchableOpacity style={styleLetters.optionButton}
                 onPress={() => deleteLetter(id)}>
                     
                     <Text style={styleLetters.letterText}>Excluir</Text>
+
                 </TouchableOpacity>
                 <TouchableOpacity style={styleLetters.optionButton}
                 onPress={() => report(id)}>
@@ -134,17 +147,21 @@ const ReplyScreen = ({route, navigation}) => {
     return(
         <View style={styleLetters.awnserReceivedContainer}>
             <View style={styleLetters.letterBox}>
-                <Text>{content}</Text>
+                <Text style={styleLetters.letterText}>{content}</Text>
             </View>
             <View>
-                <Text style={styleLetters.awnsersReceivedText}>Respostas</Text>
+                <Text style={styleLetters.awnsersReceivedText}>Respostas: {numAwnser}</Text>
             </View>
-            <View>
-                <FlatList
+            <View style={styleLetters.awnserCarousel}>
+                <Carousel
+                    layout={'stack'} 
+                    layoutCardOffset={9}
                     data={awnserList}
                     renderItem={renderItem}
-                    initialNumToRender={1}
-                />
+                    sliderWidth={SLIDER_WIDTH}
+                    itemWidth={ITEM_WIDTH}
+                    //onSnapToItem={(index) => setactiveSlide(index)}
+                /> 
             </View>
         </View>
         
@@ -152,5 +169,12 @@ const ReplyScreen = ({route, navigation}) => {
     )
 
 }
+
+const styles = StyleSheet.create({
+  itemContainer: {
+    width: ITEM_WIDTH,
+    height: ITEM_HEIGHT,
+  },
+});
 
 export default ReplyScreen;

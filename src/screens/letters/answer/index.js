@@ -20,9 +20,24 @@ const AwnserScreen = ({route, navigation}) => {
 
     const {id, content} = route.params
     const [awnser, setAwnser] = useState('')
+    const [badword, setBadword] = useState([])
     const filter = new Filter();
 
-    filter.addWords('mata', 'suicidio','matar', 'm4tar', 'm4t4r');
+    const badwordRef = ref(database, 'badword')
+
+    //palavras proibidas
+    filter.addWords(...badword);
+
+    useEffect(() => {
+        onValue(badwordRef, (snapshot) =>{
+            const data = snapshot.val();
+            const badword = []
+            for(let id in data){
+                badword.push(data[id])
+            }
+            setBadword(badword)
+        })
+    }, []);
 
     const sendAwnser = async () => {
 
@@ -77,7 +92,7 @@ const AwnserScreen = ({route, navigation}) => {
     return(
         <View style={styleLetters.container}>
             <View style={styleLetters.letterBox}>
-                <Text>{content}</Text>
+                <Text style={styleLetters.letterText}>{content}</Text>
             </View>
             <View>
                 <TextInput

@@ -7,6 +7,7 @@ export default StyleSheet.create({
         position: 'absolute',
         backgroundColor: Colors.dark,
         height: 60,
+        width: '100%',
     },
 
     text: {
